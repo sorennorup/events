@@ -11,6 +11,7 @@ class DateHandler{
         return $this->date_str = $date;
     }
     
+    
     private function set_date_obj(){
         $this->date_obj =  $this->parse_date_str();
         return $this->date_obj;
@@ -59,6 +60,6 @@ class DateHandler{
     
     }
 }
-
+$date_handler = new DateHandler();
 
 ?>

@@ -32,21 +32,29 @@ class Metabox {
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
-	    	$event_date = get_post_meta( $post->ID, '_meta_date', true );
-        	$event_time = get_post_meta( $post->ID, '_meta_time', true );
+			$event_date = get_post_meta( $post->ID, '_meta_date', true );
+			$event_end_date = get_post_meta( $post->ID, '_meta_end_date', true );
+        	$event_time = get_post_meta( $post->ID, '_event_type', true );
 			$event_url = get_post_meta($post->ID, '_ticket_url',true);
        
 			echo '<label for="myplugin_new_field">';
 			_e( '<h4>Dato:</h4>', 'myplugin_textdomain' );
 			echo '</label> ';
 			echo '<input type="date" name = "date" value="' .$event_date. '" size="25" />';
+			echo '<input type="date" name = "end-date" value="' .$event_end_date. '" size="25" />';
 	
 			echo '';
-			echo '<label for="Tidspunkt">';
-			_e( '<h4>Tidspunkt</h4>', 'myplugin_textdomain' );
+			echo '<label for="afviklingstype">';
+			_e( '<h4>Vælg en Afviklingstype</h4>', 'myplugin_textdomain' );
 			echo '</label> ';
-			echo '<input type="text" id="tidpunkt" name = "time" value="' . esc_attr( $event_time ) . '" size="25" />';
-	
+			echo '<select name = "event-type" id = "type" value="' . esc_attr( $event_time ) . '">
+			<option value="Forældrearrangement">Forældrearrangement</option>
+			<option value="Kollektiv vejledning">Kollektiv vejledning</option>
+  			<option value="Brobygning">Brobygning</option>
+			 <option value="Praktik">Praktik</option>
+			 <option value="Opfølgning">Opfølgning</option>
+			</select>';
+			
 			echo '<label for="buy-ticket-url">';
 			_e( '<h4>Eventuelt link</h4>', 'myplugin_textdomain' );
 			echo '</label> ';
@@ -54,7 +62,7 @@ class Metabox {
     	}	
 	}
 
-    public function save_meta_box_data($post_id){    
+    public function save_meta_box_data($post_id){
         /*
 	 * We need to verify this came from our screen and with proper authorization,
 	 * because the save_post action can be triggered at other times.
@@ -92,27 +100,27 @@ class Metabox {
 	/* OK, it's safe for us to save the data now. */
 	
 	// Make sure that it is set.
-	if ( ! isset( $_POST['date'] ) && ! isset($_POST['time']) && ! isset($_POST['ticketurl']) ) {
+	if ( ! isset( $_POST['date'] ) && ! isset($_POST['time']) && ! isset($_POST['ticketurl']) && ! isset($_POST['end-date']) ) {
 		return;
 	}
 
 	// Sanitize user input.
 	
 	$date = sanitize_text_field( $_POST['date'] );
-     $time = strtotime($date);
-	
-
-        $newformat = date('d-m-Y',$time);
+	$end_date = sanitize_text_field( $_POST['end-date'] );
+	$time = strtotime($date);
+	$end_time = strtotime($end_time);
+    $newformat = date('d-m-Y',$time);
         
-
-	$concerttime = sanitize_text_field( $_POST['time'] );
-	 $ticketsale_url = sanitize_text_field($_POST['url']);
+	$event_type = sanitize_text_field( $_POST['event-type'] );
+	$event_url = sanitize_text_field($_POST['url']);
         
       
 	// Update the meta field in the database.
-	    update_post_meta( $post_id, '_meta_date', $date);
 	
-        update_post_meta( $post_id, '_meta_time', $event_time );
+		update_post_meta( $post_id, '_meta_date', $date);
+		update_post_meta( $post_id, '_meta_end_date', $end_date);
+        update_post_meta( $post_id, '_event_type', $event_type );
 		update_post_meta( $post_id, '_ticket_url', $event_url );    
     }
       
