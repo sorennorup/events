@@ -23,7 +23,7 @@ function load_event_scripts() {
 function getAllEvents() {
     $args = array(
         'numberposts' => -1,
-        'posts_per_page' => 5,
+        'posts_per_page' => 3,
         'orderby'          => 'meta_value',
         'meta_query'       => array(
                 array('key'=>'_meta_date'   
@@ -47,10 +47,11 @@ function getAllEvents() {
             $from->set_date_str($start_date);
             $to->set_date_str($end_date);
             $to_date = $to->format_to_danish();
-            $html.= '<div class = "event"><h3>'.$post->post_title.'</h3>
+            $html.= '
+            <div class = "event"><h3>'.$post->post_title.'</h3>
             <h5>'.$type.' afvikles:</h5>'
             .$from->format_to_danish().' til '.$to->format_to_danish().
-            '</div>';
+            '<a class = "event-more" href = "'.$post->guid.'">Læs mere </a></div>';
         }
         $html .= '</div>';
     endif;
