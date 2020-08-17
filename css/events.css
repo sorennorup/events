@@ -19,12 +19,14 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
     }
-a.event-more {
-    float: right;
-    margin-bottom: 0px;
-    right: 5px;
-    
+
+.linked-item:link, .linked-item:visited, .linked-item:hover, .linked-item:active {
+    text-decoration: none;
+    color: #333;
+} 
+
+
     
 
-}
+    
 

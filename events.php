@@ -69,10 +69,10 @@ function renderEvents() {
 function renderEvent($post,$publish_date, $event_date, $type,$from,$insert_to ) {
     $html;
     if(Event::isUpcommingEvent($publish_date,$event_date)) :
-        $html.= '<div class = "event"> <h5>'.$type.'</h5>';
+        $html.= '<div class = "event card-hover"> <a class = "linked-item "href = "'.$post->guid.'">  <h5>'.$type.'</h5>';
         $html.= '<h3>'.$post->post_title.'</h3>';
         $html .= $from->format_to_danish().''.$insert_to.
-        '<a class = "event-more" href = "'.$post->guid.'">Læs mere </a></div>';
+        'Læs mere </a></div>';
     endif;
     return $html;
 }
