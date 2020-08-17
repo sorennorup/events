@@ -1,17 +1,15 @@
 
 .events-container {
     display: flex;
-    justify-content: space-around;
     justify-content: space-between;
 }
 
 .event {
-    width: 33.33%;
-    height: 200px;
+    align-items: center;
+    width: 33.333333%;
     border: 1px solid;
     justify-items: center;
     margin-right: 10px;
-    color: #333;
     margin-bottom: 40px;
     padding: 20px;
     min-width: 0;

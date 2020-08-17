@@ -36,24 +36,29 @@ class DateHandler{
             return false;
            }                
     }
-    
+
+    public function set_publish_date($interval) {
+      $pub_date = date('d-m-Y',strtotime($interval, strtotime($this->date_str)));
+        return $pub_date;
+    }
+ 
     private function danish_day_name(){
         for($i = 1; $i < 8; $i++){
         $weekdaynum = date('N',$this->date_obj);
         switch($weekdaynum){
-            case 1 : return 'Mandag';
+            case 1 : return 'mandag';
                      break;
-            case 2 : return 'Tirsdag';
+            case 2 : return 'tirsdag';
                      break;
-            case 3 : return 'Onsdag';
+            case 3 : return 'onsdag';
                      break;
-            case 4 : return 'Torsdag';
+            case 4 : return 'torsdag';
                     break;
-            case 5 : return 'Fredag';
+            case 5 : return 'fredag';
                     break;
-            case 6 : return 'Lørdag';
+            case 6 : return 'lørdag';
                     break;
-            case 7 : return 'Søndag';
+            case 7 : return 'søndag';
             
             }
         }
