@@ -5,6 +5,11 @@
 	function test_plugin_setup_menu(){
         add_menu_page( 'Display plugin Setup', 'Display plugin', 'manage_options', 'Plugin', 'plugin_options_page' );
 }
+
+function add_settings_page() {
+    add_options_page( 'Event settings page', 'Event Settings', 'manage_options', 'event-plugin', 'plugin_options_page' );
+}
+add_action( 'admin_menu', 'add_settings_page' );
  
 //*********** display the admin options page*********//
 function plugin_options_page() {
@@ -22,7 +27,7 @@ function plugin_options_page() {
 }
 
 function plugin_admin_init(){
-    register_setting( 'plugin_options', 'plugin_options', 'plugin_options_validate' );
+	register_setting( 'plugin_options', 'plugin_options', 'plugin_options_validate' );
     add_settings_section('plugin_main', 'Main Settings', 'plugin_section_text', 'plugin');
     add_settings_field('plugin_text_string', 'Plugin Text Input', 'plugin_setting_string', 'plugin', 'plugin_main');
 }
@@ -82,7 +87,7 @@ function custom_post_type() {
 		'show_in_rest' => true, // turns on the new blockeditor
 		'supports' => array('title','editor') //  turns on the new blockeditor
 	);
-	register_post_type( 'project', $args );
+	register_post_type( 'event', $args );
 	flush_rewrite_rules();    // Fixes the permalink bug for custom posts
 	 // "project Categories" Custom Taxonomy
     $labels = array(
@@ -113,7 +118,10 @@ function custom_post_type() {
 }
 
 add_action('admin_init', 'plugin_admin_init');
+
   //******CREATES A CUSTOM POST TEMPLATE
 add_action( 'init', 'custom_post_type' );
+
+
 
 ?>

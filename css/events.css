@@ -1,14 +1,17 @@
 
 .events-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    
+}
+
+h4 {
+    font-size: 1.6rem;
 }
 
 .event {
-    align-items: center;
     width: 33.333333%;
     border: 1px solid;
-    justify-items: center;
     margin-right: 10px;
     margin-bottom: 40px;
     padding: 20px;
@@ -20,10 +23,32 @@
     border-radius: 0.25rem;
     }
 
-.linked-item:link, .linked-item:visited, .linked-item:hover, .linked-item:active {
-    text-decoration: none;
-    color: #333;
-} 
+h5 {
+    font-size: 1.0rem !important;
+}
+
+@media screen and (max-width: 900px) {
+    .events-container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+     .event {  
+        width: 44%;
+    }
+  }
+
+@media screen and (max-width: 340px) {
+    .events-container{
+        display: flex;
+      
+    }
+     .event {  
+        width: 44%;
+    }
+    .event h3 {
+        font-size: 1.5rem;
+    }
+}
 
 
     

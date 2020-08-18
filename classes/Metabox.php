@@ -6,16 +6,16 @@ class Metabox {
     private $meta_box_name = 'Detaljer';
     public $post_type;
     
-     function __construct($meta_box_name,$post_type){
+    function __construct($meta_box_name,$post_type){
         $this->meta_box_name = $meta_box_name ;
 		$this->post_type = $post_type;
 		
-        add_action('add_meta_boxes', array($this,'concerts_add_meta_box'));
+        add_action('add_meta_boxes', array($this,'events_add_meta_box'));
 		add_action('save_post', array($this, 'save_meta_box_data'));
      }
      
      
-	public function concerts_add_meta_box() {
+	public function events_add_meta_box() {
 	
 		add_meta_box(
 			'date_id',
@@ -26,7 +26,7 @@ class Metabox {
 
       	function meta_box_callback($post){
 		
-			wp_nonce_field( 'concerts_meta_box', 'myplugin_meta_box_nonce' );
+			wp_nonce_field( 'events_meta_box', 'myplugin_meta_box_nonce' );
      
 	/*
 	 * Use get_post_meta() to retrieve an existing value
@@ -74,7 +74,7 @@ class Metabox {
 	}
 
 	// Verify that the nonce is valid.
-	if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce'], 'concerts_meta_box' ) ) {
+	if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce'], 'events_meta_box' ) ) {
 		return;
 	}
 
@@ -125,6 +125,6 @@ class Metabox {
     }
       
 }
- $newMetabox = new Metabox('Detaljer', 'project');
+ $newMetabox = new Metabox('Detaljer', 'event');
 
 ?>
