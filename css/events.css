@@ -57,6 +57,7 @@ h4 {
     text-transform: uppercase !important;
     font-weight: 500;
     margin-top: 20px;
+    height: 20px;
 }
 
 @media screen and (max-width: 900px) {
