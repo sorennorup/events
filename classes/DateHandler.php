@@ -26,6 +26,21 @@ class DateHandler{
         $this->date_is_past();
         return $this->danish_day_name().' '.date('d-m-Y',$this->date_obj);
     }
+
+    public function simple_date(){
+        $this->date_obj = $this->parse_date_str($this->date_str);
+        return date('d M', $this->date_obj);
+    }
+
+    public function day() {
+        $this->date_obj = $this->parse_date_str($this->date_str);
+        return date('d', $this->date_obj);
+    }
+
+    public function month() {
+        $this->date_obj = $this->parse_date_str($this->date_str);
+        return date('M', $this->date_obj);
+    }
     
     public function date_is_past(){    
            $today_obj = strtotime(date('Y-m-d'));    
@@ -38,7 +53,7 @@ class DateHandler{
     }
 
     public function set_publish_date($interval) {
-      $pub_date = date('d-m-Y',strtotime($interval, strtotime($this->date_str)));
+      $pub_date = date('d-m',strtotime($interval, strtotime($this->date_str)));
         return $pub_date;
     }
  
