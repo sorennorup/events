@@ -2,6 +2,7 @@
 .events-container {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     
 }
 
@@ -10,7 +11,7 @@ h4 {
 }
 
 .event {
-    width: 33.333333%;
+    width: 20%;
     border: 1px solid;
     margin-right: 10px;
     margin-bottom: 40px;
@@ -23,12 +24,6 @@ h4 {
     color: #fff;
     padding: 0px 20px;
     }
-
-.event-sidebar {
-    margin-right: 1px;
-    padding: 10px;
-    max-width:100px;
-}
 
 .event-day {
     font-size: 2.6rem;
