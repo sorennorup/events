@@ -42,8 +42,7 @@ function renderEvents() {
     $posts = get_posts( $args );
    
     if($posts) :
-        $html .= '<h2>Det sker lige nu</h2>';
-        $html .= '<div class = "events-container">';
+        
         
         foreach( $posts as $post ) {  
             $start_date  =   Event::getStartDate($post);
@@ -57,7 +56,10 @@ function renderEvents() {
                  $insert_to = ' <div class = "event-enddate"> <div style = "position: absolute;margin-top: 10px; margin-left: -15px;font-size:30px;"> - </div>'.renderDay($to->day(),$to->month()).'</div>';
                  $event_date = $to->set_date_str($end_date);
             endif;
-
+           if(Event::isUpcommingEvent($publsh_date,$event_date)) {
+                $html .= '<h2>Det sker lige nu</h2>';
+                $html .= '<div class = "events-container">';
+           }
            $html .= renderEvent($post,$publish_date, $event_date, $type,$from,$insert_to);
         }
         $html .= '</div>';

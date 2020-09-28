@@ -3,7 +3,6 @@
 
     public static function isUpcommingEvent( $pub_date,$event_date ) {
         if( strtotime(date( 'd-m-Y' ) )>= strtotime( $pub_date ) && strtotime(date('d-m-Y')) > strtotime($event_date.'-14 days') && strtotime(date( 'd-m-Y '))<= strtotime( $event_date)) {
-            echo strtotime($event_date.'-14 days');
             return true;
         }
         else {
