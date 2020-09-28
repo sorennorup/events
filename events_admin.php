@@ -2,8 +2,8 @@
     //*********** ADDS PLUGIN ADMINPAGE THE ADMIN MENU***********//
   
 
-	function test_plugin_setup_menu(){
-        add_menu_page( 'Display plugin Setup', 'Display plugin', 'manage_options', 'Plugin', 'plugin_options_page' );
+function test_plugin_setup_menu(){
+	add_menu_page( 'Display plugin Setup', 'Display plugin', 'manage_options', 'Plugin', 'plugin_options_page' );
 }
 
 function add_settings_page() {
@@ -121,7 +121,5 @@ add_action('admin_init', 'plugin_admin_init');
 
   //******CREATES A CUSTOM POST TEMPLATE
 add_action( 'init', 'custom_post_type' );
-
-
 
 ?>
