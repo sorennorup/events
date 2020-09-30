@@ -25,7 +25,6 @@ class Metabox {
 		);
 
       	function meta_box_callback($post){
-		
 			wp_nonce_field( 'events_meta_box', 'myplugin_meta_box_nonce' );
      
 	/*
@@ -36,7 +35,7 @@ class Metabox {
 			$event_end_date = get_post_meta( $post->ID, '_meta_end_date', true );
         	$event_time = get_post_meta( $post->ID, '_event_type', true );
 			$event_url = get_post_meta($post->ID, '_ticket_url',true);
-       
+         
 			echo '<label for="myplugin_new_field">';
 			_e( '<h4>Dato:</h4>', 'myplugin_textdomain' );
 			echo '</label> ';
